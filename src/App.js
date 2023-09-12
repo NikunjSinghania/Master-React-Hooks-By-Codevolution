@@ -1,13 +1,34 @@
 import './App.css';
-import React , {useEffect, useState} from 'react'
+import React , {useEffect, useReducer, useState} from 'react'
 import Mouse from './Mouse';
 import Counter from './Counter';
 import Data from './Data';
 import ComponentC from './ComponentC';
+import Reduce from './Reduce';
+import ReduceComplex from './ReduceComplex';
+import ComponentCh from './ComponentCh';
+import Fetch from './Fetch';
 
 export const UserContext = React.createContext()
+export const CounterContext = React.createContext()
+
+const initalState = 'YES'
+
+const reduce = (state, action) => {
+    switch(action) {
+        case 1 : return 'YES'
+        case 0 : return 'NO'
+        default : return ''
+    }
+}
+
 
 function App() {
+
+  const [counter, dispatch] = useReducer(reduce, initalState)
+
+
+
   // const initialCount = 0
   // const [display, setDisplay] = useState(true)
   // const [arr, setArr] = useState([1, 2, 3])
@@ -52,12 +73,22 @@ function App() {
 
   return (
     <div className="App">
+      <Fetch />
+      {/* {counter}
+
+      <CounterContext.Provider value={{ counter, dispatch }}>
+        <ComponentCh />
+      </CounterContext.Provider> */}
+
+      {/* <Reduce /> */}
+      {/* <ReduceComplex /> */}
+
       {/* <Counter />
       <Data /> */}
       
-      <UserContext.Provider value = {'Nikunj'}>
+      {/* <UserContext.Provider value = {'Nikunj'}>
         <ComponentC />
-      </UserContext.Provider>
+      </UserContext.Provider> */}
 
       {/* <button onClick={() => setData(data+1)}>Inc : {data}</button>
       <button onClick={() => setData(data-1)}>Dec : {data}</button>
